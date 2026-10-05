@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://dupxcuvd155mr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oakii"]
+bg_color = Color(0.2159017, 0.21590173, 0.21590161, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[resource]
+Button/font_sizes/font_size = 112
+Button/styles/focus = SubResource("StyleBoxFlat_oakii")
+Button/styles/hover = SubResource("StyleBoxFlat_oakii")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_oakii")
+Button/styles/normal = SubResource("StyleBoxFlat_oakii")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_oakii")

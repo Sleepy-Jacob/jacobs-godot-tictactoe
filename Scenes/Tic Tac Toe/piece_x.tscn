@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cmigwim2x6c45"]
+
+[ext_resource type="Script" uid="uid://cc0koxeywriy2" path="res://scripts/Tic Tac Toe/vishus assestes/piece_x.gd" id="1_jl836"]
+
+[node name="Piece X" type="Node2D" unique_id=78251367]
+script = ExtResource("1_jl836")
+size = 200.0
+color = Color(0.99607843, 0.20784314, 0.12941177, 1)

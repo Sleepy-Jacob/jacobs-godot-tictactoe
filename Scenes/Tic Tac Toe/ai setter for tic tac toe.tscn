@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cnub6moktei6d"]
+
+[ext_resource type="Script" uid="uid://b3snllcm3uapa" path="res://scripts/Tic Tac Toe/ai_seter_for tic_tac_toe.gd" id="1_gevqi"]
+[ext_resource type="PackedScene" uid="uid://bhrfy2q2k7nph" path="res://Scenes/Tic Tac Toe/tic_tac_toe.tscn" id="2_bw5tn"]
+
+[node name="Node" type="Node" unique_id=995870577]
+script = ExtResource("1_gevqi")
+
+[node name="tic tac toe" parent="." unique_id=507213537 instance=ExtResource("2_bw5tn")]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cvvou407b8r5q"]
+
+[ext_resource type="Script" uid="uid://dlfrykolicsb1" path="res://scripts/Tic Tac Toe/vishus assestes/board.gd" id="1_tnbny"]
+
+[node name="board" type="Node2D" unique_id=2021025395]
+script = ExtResource("1_tnbny")

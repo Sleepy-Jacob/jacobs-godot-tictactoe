@@ -1,0 +1,753 @@
+[gd_scene format=3 uid="uid://bhrfy2q2k7nph"]
+
+[ext_resource type="Script" uid="uid://b2wx4nbik704m" path="res://scripts/Tic Tac Toe/tic_tac_toe.gd" id="1_0ytwp"]
+[ext_resource type="PackedScene" uid="uid://cvvou407b8r5q" path="res://Scenes/Tic Tac Toe/board.tscn" id="2_fimfk"]
+[ext_resource type="Script" uid="uid://d2ggldwxjyck7" path="res://Scenes/Tic Tac Toe/backround.gd" id="2_uur88"]
+[ext_resource type="Script" uid="uid://ckqtrp28gew8x" path="res://scripts/Tic Tac Toe/button.gd" id="3_xnw4b"]
+[ext_resource type="Texture2D" uid="uid://b3c704gfgx5be" path="res://art/turn.png" id="6_c25wv"]
+[ext_resource type="PackedScene" uid="uid://4rhdee4tjxen" path="res://Scenes/piece_o.tscn" id="7_5fgmc"]
+[ext_resource type="Texture2D" uid="uid://f54l0uagjycb" path="res://art/back arrow.png" id="7_fimfk"]
+[ext_resource type="Script" uid="uid://deq8gueijr6v4" path="res://scripts/Tic Tac Toe/win_counter.gd" id="7_yo3ei"]
+[ext_resource type="Script" uid="uid://begjfjyhtbqsi" path="res://scripts/Tic Tac Toe/back_button.gd" id="8_fimfk"]
+[ext_resource type="PackedScene" uid="uid://cmigwim2x6c45" path="res://Scenes/Tic Tac Toe/piece_x.tscn" id="8_p0y3k"]
+
+[sub_resource type="Animation" id="Animation_fimfk"]
+resource_name = "Draw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:recive_inputs")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Draws:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_board_display"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_p0y3k"]
+resource_name = "O_wins"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("O_wins:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:recive_inputs")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666666, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_board_display"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yo3ei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:recive_inputs")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("X_wins:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("O_wins:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Draws:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5fgmc"]
+resource_name = "X_wins"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("X_wins:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:recive_inputs")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_board_display"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fgmc"]
+_data = {
+&"Draw": SubResource("Animation_fimfk"),
+&"O_wins": SubResource("Animation_p0y3k"),
+&"RESET": SubResource("Animation_yo3ei"),
+&"X_wins": SubResource("Animation_5fgmc")
+}
+
+[sub_resource type="BitMap" id="BitMap_us5h2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iatpj"]
+size = Vector2(700, 700)
+
+[sub_resource type="SystemFont" id="SystemFont_uur88"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_us5h2"]
+font = SubResource("SystemFont_uur88")
+font_size = 280
+font_color = Color(0, 0, 0, 1)
+outline_size = 23
+
+[sub_resource type="LabelSettings" id="LabelSettings_fimfk"]
+font_size = 69
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmde4"]
+line_spacing = -32.43
+font_size = 61
+font_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+outline_size = 5
+outline_color = Color(0.7162962, 0.7162962, 0.7162962, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo3ei"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iatpj"]
+corner_radius_top_left = 70
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+shadow_size = 57
+
+[sub_resource type="LabelSettings" id="LabelSettings_iatpj"]
+font_size = 329
+font_color = Color(0, 0, 0, 1)
+
+[node name="tic tac toe" type="Node" unique_id=507213537 node_paths=PackedStringArray("turn_o", "turn_x", "touchscreen_buttons")]
+script = ExtResource("1_0ytwp")
+turn_o = NodePath("Turn/Label/Piece O")
+turn_x = NodePath("Turn/Label/Piece X")
+recive_inputs = true
+touchscreen_buttons = [NodePath("Control2/board/button 0 0"), NodePath("Control2/board/button 0 1"), NodePath("Control2/board/button 0 2"), NodePath("Control2/board/button 0 3"), NodePath("Control2/board/button 0 4"), NodePath("Control2/board/button 1 1"), NodePath("Control2/board/button 2 1"), NodePath("Control2/board/button 1 2"), NodePath("Control2/board/button 2 2")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1001505690]
+libraries/ = SubResource("AnimationLibrary_5fgmc")
+
+[node name="backround" type="ColorRect" parent="." unique_id=748530016]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8392157, 0.8980392, 0.87058824, 1)
+script = ExtResource("2_uur88")
+defalt_color = Color(0.8392157, 0.8980392, 0.87058824, 1)
+x_color = Color(1, 0.87058824, 0.87058824, 1)
+o_color = Color(0.81623447, 0.8347293, 0.9999984, 1)
+
+[node name="Control2" type="Control" parent="." unique_id=1320167229]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pieces" type="Node2D" parent="Control2" unique_id=753451547]
+position = Vector2(-1292, -587.4241)
+
+[node name="O pieces" type="Node2D" parent="Control2/pieces" unique_id=1649440835]
+unique_name_in_owner = true
+
+[node name="Piece O" parent="Control2/pieces/O pieces" unique_id=1025579976 instance=ExtResource("7_5fgmc")]
+position = Vector2(977, 592.4241)
+size = 200.0
+
+[node name="Piece O2" parent="Control2/pieces/O pieces" unique_id=1998650391 instance=ExtResource("7_5fgmc")]
+position = Vector2(977, 913.4241)
+size = 200.0
+
+[node name="Piece O3" parent="Control2/pieces/O pieces" unique_id=1380162495 instance=ExtResource("7_5fgmc")]
+position = Vector2(977, 1204.4241)
+size = 200.0
+
+[node name="Piece O4" parent="Control2/pieces/O pieces" unique_id=505074427 instance=ExtResource("7_5fgmc")]
+position = Vector2(1292, 587.4241)
+size = 200.0
+
+[node name="Piece O5" parent="Control2/pieces/O pieces" unique_id=567441992 instance=ExtResource("7_5fgmc")]
+position = Vector2(1297, 913.4241)
+size = 200.0
+
+[node name="Piece O6" parent="Control2/pieces/O pieces" unique_id=2133503252 instance=ExtResource("7_5fgmc")]
+position = Vector2(1297, 1204.4241)
+size = 200.0
+
+[node name="Piece O7" parent="Control2/pieces/O pieces" unique_id=1612179866 instance=ExtResource("7_5fgmc")]
+position = Vector2(1612, 587.4241)
+size = 200.0
+
+[node name="Piece O8" parent="Control2/pieces/O pieces" unique_id=1315797515 instance=ExtResource("7_5fgmc")]
+position = Vector2(1612, 913.4241)
+size = 200.0
+
+[node name="Piece O9" parent="Control2/pieces/O pieces" unique_id=1275630870 instance=ExtResource("7_5fgmc")]
+position = Vector2(1612, 1204.4241)
+size = 200.0
+
+[node name="X peices" type="Node2D" parent="Control2/pieces" unique_id=757882352]
+unique_name_in_owner = true
+
+[node name="Piece X" parent="Control2/pieces/X peices" unique_id=78251367 instance=ExtResource("8_p0y3k")]
+position = Vector2(977, 598.4241)
+size = 100.0
+
+[node name="Piece X2" parent="Control2/pieces/X peices" unique_id=1559531809 instance=ExtResource("8_p0y3k")]
+position = Vector2(977, 919.4241)
+size = 100.0
+
+[node name="Piece X3" parent="Control2/pieces/X peices" unique_id=257054097 instance=ExtResource("8_p0y3k")]
+position = Vector2(977, 1204.4241)
+size = 100.0
+
+[node name="Piece X4" parent="Control2/pieces/X peices" unique_id=1929964362 instance=ExtResource("8_p0y3k")]
+position = Vector2(1292, 598.4241)
+size = 100.0
+
+[node name="Piece X5" parent="Control2/pieces/X peices" unique_id=1778333656 instance=ExtResource("8_p0y3k")]
+position = Vector2(1297, 913.4241)
+size = 100.0
+
+[node name="Piece X6" parent="Control2/pieces/X peices" unique_id=1528611344 instance=ExtResource("8_p0y3k")]
+position = Vector2(1297, 1204.4241)
+size = 100.0
+
+[node name="Piece X7" parent="Control2/pieces/X peices" unique_id=1031901272 instance=ExtResource("8_p0y3k")]
+position = Vector2(1612, 592.4241)
+size = 100.0
+
+[node name="Piece X8" parent="Control2/pieces/X peices" unique_id=510641994 instance=ExtResource("8_p0y3k")]
+position = Vector2(1612, 913.4241)
+size = 100.0
+
+[node name="Piece X9" parent="Control2/pieces/X peices" unique_id=1270056868 instance=ExtResource("8_p0y3k")]
+position = Vector2(1612, 1204.4241)
+size = 100.0
+
+[node name="board" parent="Control2" unique_id=2021025395 instance=ExtResource("2_fimfk")]
+position = Vector2(0, 326)
+size = 900.0
+line_thickness = 56.885
+
+[node name="button 0 0" type="TouchScreenButton" parent="Control2/board" unique_id=1942039479 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(-315, -321)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+
+[node name="button 0 1" type="TouchScreenButton" parent="Control2/board" unique_id=395200080 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(-3.0517578e-05, -321)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(1, 0)
+
+[node name="button 0 2" type="TouchScreenButton" parent="Control2/board" unique_id=335644635 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(319.99997, -321)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(2, 0)
+
+[node name="button 0 3" type="TouchScreenButton" parent="Control2/board" unique_id=45167525 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(-315, 0)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(0, 1)
+
+[node name="button 0 4" type="TouchScreenButton" parent="Control2/board" unique_id=1513442325 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(5.028656, 6.321045)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(1, 1)
+
+[node name="button 1 1" type="TouchScreenButton" parent="Control2/board" unique_id=313164826 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(319.99997, 0)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(2, 1)
+
+[node name="button 2 1" type="TouchScreenButton" parent="Control2/board" unique_id=1038990167 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(-315, 291)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(0, 2)
+
+[node name="button 1 2" type="TouchScreenButton" parent="Control2/board" unique_id=1321119233 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(5, 291)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(1, 2)
+
+[node name="button 2 2" type="TouchScreenButton" parent="Control2/board" unique_id=2147337268 node_paths=PackedStringArray("tic_tac_toe")]
+position = Vector2(319.99997, 291)
+scale = Vector2(0.31516218, 0.31516218)
+bitmask = SubResource("BitMap_us5h2")
+shape = SubResource("RectangleShape2D_iatpj")
+script = ExtResource("3_xnw4b")
+tic_tac_toe = NodePath("../../..")
+board_position = Vector2i(2, 2)
+
+[node name="Turn" type="Control" parent="." unique_id=562538737]
+layout_mode = 3
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Turn" unique_id=1936349162]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 242.0
+offset_right = 498.0
+offset_bottom = 625.0
+grow_horizontal = 2
+scale = Vector2(0.9090773, 0.9090773)
+text = "Turn"
+label_settings = SubResource("LabelSettings_us5h2")
+
+[node name="Piece O" parent="Turn/Label" unique_id=393647935 instance=ExtResource("7_5fgmc")]
+position = Vector2(-187.00002, 173.37575)
+scale = Vector2(0.23019233, 0.23019233)
+size = 1400.0
+line_thickness = 160.0
+
+[node name="Piece X" parent="Turn/Label" unique_id=379688914 instance=ExtResource("8_p0y3k")]
+position = Vector2(-186.54443, 173)
+scale = Vector2(0.17707102, 0.17707102)
+size = 800.0
+line_thickness = 160.0
+
+[node name="Turn" type="Sprite2D" parent="Turn" unique_id=1303048520]
+visible = false
+position = Vector2(372, 487.99988)
+scale = Vector2(0.23019233, 0.23019233)
+texture = ExtResource("6_c25wv")
+
+[node name="Win Counter" type="Control" parent="." unique_id=507633226 node_paths=PackedStringArray("x_lable", "o_lable", "draw_count")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("7_yo3ei")
+x_lable = NodePath("O wins/Label")
+o_lable = NodePath("Xswins/Label")
+draw_count = NodePath("Draw counter/Label3/Draw count")
+
+[node name="Xswins" type="Control" parent="Win Counter" unique_id=30118662]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="Win Counter/Xswins" unique_id=105085561]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 327.0
+offset_top = 17.0
+offset_right = 367.0
+offset_bottom = 112.0
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_fimfk")
+
+[node name="Piece O" parent="Win Counter/Xswins" unique_id=1456133310 instance=ExtResource("7_5fgmc")]
+position = Vector2(240, 71)
+size = 110.07
+
+[node name="O wins" type="Control" parent="Win Counter" unique_id=385854636]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Piece X" parent="Win Counter/O wins" unique_id=480063870 instance=ExtResource("8_p0y3k")]
+position = Vector2(-58, 71)
+size = 50.0
+
+[node name="Label" type="Label" parent="Win Counter/O wins" unique_id=567070834]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -23.0
+offset_right = -140.0
+offset_bottom = 72.0
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_fimfk")
+
+[node name="Draw counter" type="Control" parent="Win Counter" unique_id=876502549]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label3" type="Label" parent="Win Counter/Draw counter" unique_id=375261790]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = 1.0
+offset_right = 191.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Draw 
+Count"
+label_settings = SubResource("LabelSettings_mmde4")
+horizontal_alignment = 1
+
+[node name="Draw count" type="Label" parent="Win Counter/Draw counter/Label3" unique_id=1386272791]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 316.0
+offset_top = -168.0
+offset_right = 356.0
+offset_bottom = -73.0
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_fimfk")
+
+[node name="Button" type="Button" parent="." unique_id=545378335]
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 158.0
+offset_bottom = 153.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_yo3ei")
+icon = ExtResource("7_fimfk")
+script = ExtResource("8_fimfk")
+
+[node name="X_wins" type="Control" parent="." unique_id=147700391]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="X_wins" unique_id=1622432500]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.5
+offset_top = -535.0
+offset_right = 441.5
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iatpj")
+
+[node name="Piece X" parent="X_wins" unique_id=1633744237 instance=ExtResource("8_p0y3k")]
+position = Vector2(5, -241)
+line_thickness = 80.0
+
+[node name="Label" type="Label" parent="X_wins" unique_id=1961746739]
+layout_mode = 0
+offset_left = -372.0
+offset_top = -102.0
+offset_right = 400.0
+offset_bottom = 347.0
+text = "Wins"
+label_settings = SubResource("LabelSettings_iatpj")
+horizontal_alignment = 1
+
+[node name="O_wins" type="Control" parent="." unique_id=1175751899]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="O_wins" unique_id=641221109]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.5
+offset_top = -535.0
+offset_right = 441.5
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iatpj")
+
+[node name="Piece O" parent="O_wins" unique_id=1605512738 instance=ExtResource("7_5fgmc")]
+position = Vector2(0, -273)
+size = 405.125
+line_thickness = 80.0
+
+[node name="Label" type="Label" parent="O_wins" unique_id=1430037111]
+layout_mode = 0
+offset_left = -372.0
+offset_top = -102.0
+offset_right = 400.0
+offset_bottom = 347.0
+text = "Wins"
+label_settings = SubResource("LabelSettings_iatpj")
+horizontal_alignment = 1
+
+[node name="Draws" type="Control" parent="." unique_id=1336318304]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Draws" unique_id=1632424738]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.5
+offset_top = -102.0
+offset_right = 441.5
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iatpj")
+
+[node name="Label" type="Label" parent="Draws" unique_id=1759027022]
+layout_mode = 0
+offset_left = -441.0
+offset_top = -102.0
+offset_right = 401.0
+offset_bottom = 347.0
+text = "Draw"
+label_settings = SubResource("LabelSettings_iatpj")
+horizontal_alignment = 1
+
+[node name="O_wins2" type="Control" parent="." unique_id=1456303058]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="O_wins2" unique_id=950638261]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -441.5
+offset_top = -535.0
+offset_right = 441.5
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iatpj")
+
+[node name="Piece O" parent="O_wins2" unique_id=1404968491 instance=ExtResource("7_5fgmc")]
+position = Vector2(0, -273)
+size = 405.125
+line_thickness = 80.0
+
+[node name="Label" type="Label" parent="O_wins2" unique_id=1938138991]
+layout_mode = 0
+offset_left = -372.0
+offset_top = -102.0
+offset_right = 400.0
+offset_bottom = 347.0
+text = "Wins"
+label_settings = SubResource("LabelSettings_iatpj")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Control2/board/button 0 0" to="Control2/board/button 0 0" method="_on_pressed"]
+[connection signal="released" from="Control2/board/button 0 0" to="Control2/board/button 0 0" method="_on_released"]
+[connection signal="tile_activeted" from="Control2/board/button 0 0" to="." method="_on_button_0_0_tile_activeted"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

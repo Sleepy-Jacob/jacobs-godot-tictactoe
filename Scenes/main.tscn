@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cw6ld1yp7jas3"]
+
+[ext_resource type="Script" uid="uid://btewfkohc7f86" path="res://scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bineh8iwk45oj" path="res://scripts/Tic Tac Toe/game.gd" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://c55xtfjvabfj2" path="res://Scenes/Main menu.tscn" id="3_8gbba"]
+
+[node name="Main" type="Node" unique_id=1606312971]
+script = ExtResource("1_jjgbg")
+
+[node name="gamemanger" type="Node" parent="." unique_id=1216711188 groups=["GameManger"]]
+script = ExtResource("2_bo1nx")
+
+[node name="main menu" parent="gamemanger" unique_id=950834413 instance=ExtResource("3_8gbba")]
